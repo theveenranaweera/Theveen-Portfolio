@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import LoadingScreen from '@/components/LoadingScreen';
+
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -15,47 +15,38 @@ import Footer from '@/components/Footer';
 gsap.registerPlugin(ScrollTrigger);
 
 const Portfolio = () => {
-  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
-    // Initialize smooth scrolling and other effects after loading
-    if (!isLoading) {
-      // Add floating background elements animation
-      gsap.to('.floating-orb', {
-        y: -20,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut',
-        stagger: {
-          amount: 1,
-          from: 'random'
+    // Add floating background elements animation
+    gsap.to('.floating-orb', {
+      y: -20,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+      stagger: {
+        amount: 1,
+        from: 'random'
+      }
+    });
+
+    // Add parallax effect to background elements
+    gsap.utils.toArray('.parallax-element').forEach((element: any) => {
+      gsap.to(element, {
+        yPercent: -50,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: element,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
         }
       });
+    });
+  }, []);
 
-      // Add parallax effect to background elements
-      gsap.utils.toArray('.parallax-element').forEach((element: any) => {
-        gsap.to(element, {
-          yPercent: -50,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: element,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
-      });
-    }
-  }, [isLoading]);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
 
   return (
     <div className="relative min-h-screen bg-background overflow-x-hidden px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -86,10 +77,10 @@ const Portfolio = () => {
       {/* Scroll Indicator */}
       <div className="fixed bottom-8 right-8 z-40">
         <div className="w-1 h-16 bg-primary/20 rounded-full overflow-hidden">
-          <div 
+          <div
             className="w-full bg-primary rounded-full transition-all duration-300"
-            style={{ 
-              height: `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%` 
+            style={{
+              height: `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`
             }}
           ></div>
         </div>

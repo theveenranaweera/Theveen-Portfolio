@@ -215,13 +215,7 @@
     box-shadow: var(--shadow-glass);
   }
   
-  /* Loading Animation */
-  .progress-bar {
-    background: linear-gradient(90deg, 
-      hsl(var(--primary)) 0%, 
-      hsl(var(--accent)) 100%
-    );
-  }
+
 }
 
 @layer utilities {
