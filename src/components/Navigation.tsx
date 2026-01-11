@@ -188,7 +188,7 @@ const Navigation = () => {
                 setIsOpen(false);
               }}
               className={`
-                p-3 rounded-xl text-left font-medium transition-colors
+                p-4 rounded-xl text-left font-medium transition-colors
                 ${activeSection === link.href
                   ? 'bg-primary/10 text-primary'
                   : 'hover:bg-white/5 text-muted-foreground'}

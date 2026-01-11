@@ -51,7 +51,7 @@ const About = () => {
   }, []);
 
   const handleResumeDownload = () => {
-    window.open('https://drive.google.com/file/d/1CRrwQzhM9gjcOf-_OlEH67cRe3jrPn9b/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/file/d/1VUSeJK7taZ-c8awtd5OSEWy1ZrxeVlIu/view?usp=sharing', '_blank');
   };
 
   return (
@@ -97,7 +97,7 @@ const About = () => {
                 <div className="h-px w-full my-6 bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
 
                 <p>
-                  When I’m not coding, I love exploring new music, experimenting with songs as a singer,
+                  When I'm not coding, I love exploring new music, experimenting with songs as a singer,
                   or staying active at the gym and in the pool as a swimmer.
                 </p>
               </div>
@@ -123,7 +123,7 @@ const About = () => {
                 {/* Iframe Wrapper - Aspect Ratio 1:1.414 (A4 Paper) */}
                 <div className="relative w-full aspect-[1/1.414] bg-white overflow-hidden shadow-inner">
                   <iframe
-                    src="https://drive.google.com/file/d/1CRrwQzhM9gjcOf-_OlEH67cRe3jrPn9b/preview"
+                    src="https://drive.google.com/file/d/1VUSeJK7taZ-c8awtd5OSEWy1ZrxeVlIu/preview"
                     className="absolute top-0 left-0 w-full h-full border-0 transform scale-[1.02] origin-top"
                     title="Resume Preview"
                   />
