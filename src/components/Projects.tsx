@@ -100,7 +100,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="project-card glass-card p-8 w-full hover:glow-primary transition-all duration-300 hover:scale-[1.02] flex flex-col"
+              className="project-card glass-card p-8 w-full transition-all duration-300 hover:scale-[1.02] flex flex-col"
             >
               {/* Project Header */}
               <div className="mb-6 flex-grow">
@@ -136,8 +136,8 @@ const Projects = () => {
                   size="default"
                   disabled={project.demoUrl === '#' || !project.demoUrl}
                   className={`flex-1 transition-all duration-300 rounded-full ${project.demoUrl === '#' || !project.demoUrl
-                      ? 'border-primary/10 text-primary/40 opacity-50 cursor-not-allowed'
-                      : 'border-primary/30 text-primary hover:text-primary hover:bg-primary/10 hover:border-primary/50'
+                    ? 'border-primary/10 text-primary/40 opacity-50 cursor-not-allowed'
+                    : 'border-primary/30 text-primary hover:text-primary hover:bg-primary/10 hover:border-primary/50'
                     }`}
                   onClick={() => {
                     if (project.demoUrl !== '#' && project.demoUrl) {

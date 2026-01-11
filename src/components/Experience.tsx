@@ -112,8 +112,8 @@ const Experience = () => {
   }, []);
 
   return (
-    <section 
-      id="experience" 
+    <section
+      id="experience"
       ref={sectionRef}
       className="min-h-screen py-16 md:py-16 lg:py-24 px-4 flex items-center"
     >
@@ -137,7 +137,7 @@ const Experience = () => {
             {experiences.map((exp, index) => {
               const Icon = exp.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="timeline-entry relative flex md:justify-between items-center"
                   data-side={exp.side}
@@ -149,19 +149,18 @@ const Experience = () => {
 
                   {/* Content Card */}
                   <div
-                    className={`w-full md:w-[48%] ${
-                      exp.side === 'left' ? 'md:pr-4' : 'md:pl-4 ml-auto'
-                    }`}
+                    className={`w-full md:w-[48%] ${exp.side === 'left' ? 'md:pr-4' : 'md:pl-4 ml-auto'
+                      }`}
                   >
-                    <div className="glass-card p-6 hover:glow-primary transition-all duration-300">
+                    <div className="glass-card p-6 transition-all duration-300">
                       <div className="mb-4">
                         <h3 className="text-xl font-heading font-semibold text-gradient-accent mb-2">
                           {exp.role}
                         </h3>
                         <div className="flex items-center justify-between mb-2">
-                          <a 
-                            href={exp.companyUrl} 
-                            target="_blank" 
+                          <a
+                            href={exp.companyUrl}
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-primary font-medium hover:text-primary/80 hover:underline transition-colors duration-300"
                           >
