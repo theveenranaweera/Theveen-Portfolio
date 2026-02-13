@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Download } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
+import { RESUME_LINK, RESUME_PREVIEW_LINK } from '@/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,46 +13,46 @@ const About = () => {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      if (!section) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 70%', // Triggers when top of section hits 70% viewport height
-        end: 'bottom 20%',
-        toggleActions: 'play none none none', // Do not reverse on scroll up
-        once: true // <--- This ensures the animation runs only ONE time
-      }
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 70%', // Triggers when top of section hits 70% viewport height
+          end: 'bottom 20%',
+          toggleActions: 'play none none none', // Do not reverse on scroll up
+          once: true // <--- This ensures the animation runs only ONE time
+        }
+      });
 
-    // Fade in section
-    tl.fromTo(section,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
-    );
+      // Fade in section
+      tl.fromTo(section,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+      );
 
-    // Slide content from left
-    tl.fromTo(contentRef.current,
-      { x: -50, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
-      '-=0.6'
-    );
+      // Slide content from left
+      tl.fromTo(contentRef.current,
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+        '-=0.6'
+      );
 
-    // Slide resume from right
-    tl.fromTo(imageRef.current,
-      { x: 50, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' },
-      '-=0.6'
-    );
+      // Slide resume from right
+      tl.fromTo(imageRef.current,
+        { x: 50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' },
+        '-=0.6'
+      );
+    }, sectionRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   const handleResumeDownload = () => {
-    window.open('https://drive.google.com/file/d/1VUSeJK7taZ-c8awtd5OSEWy1ZrxeVlIu/view?usp=sharing', '_blank');
+    window.open(RESUME_LINK, '_blank');
   };
 
   return (
@@ -123,7 +124,7 @@ const About = () => {
                 {/* Iframe Wrapper - Aspect Ratio 1:1.414 (A4 Paper) */}
                 <div className="relative w-full aspect-[1/1.414] bg-white overflow-hidden shadow-inner">
                   <iframe
-                    src="https://drive.google.com/file/d/1VUSeJK7taZ-c8awtd5OSEWy1ZrxeVlIu/preview"
+                    src={RESUME_PREVIEW_LINK}
                     className="absolute top-0 left-0 w-full h-full border-0 transform scale-[1.02] origin-top"
                     title="Resume Preview"
                   />

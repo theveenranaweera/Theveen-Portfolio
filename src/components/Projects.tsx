@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, GithubLogo, Globe } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
+import { PROJECTS } from '@/data/projects';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,73 +11,58 @@ const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
 
-  const projects = [
-    {
-      title: 'GluCure+',
-      description: 'A cross-platform mobile application empowering users to track and reduce daily sugar consumption. It features a visual "fuel gauge" progress ring, historical data tracking, and real-time integration with the OpenFoodFacts API to instantly fetch nutrition data for over 2 million retail items.',
-      techStack: ['Flutter', 'Dart', 'Firebase',],
-      demoUrl: 'https://drive.google.com/file/d/1YwZl4SoU2Ok4K587Azrf71ZAPu3InTL5/view?usp=sharing',
-      codeUrl: 'https://github.com/theveenranaweera/GluCurePlus',
-    },
-    {
-      title: 'Sort Wars!',
-      description: 'A high-performance algorithmic benchmarking suite engineered in Python to analyze Merge Sort and Quick Sort on datasets of 100,000+ elements. It utilizes Matplotlib to visualize execution time and memory usage, demonstrating QuickSort\'s 40% memory efficiency advantage and achieving 99.7% faster execution in optimized scenarios.',
-      techStack: ['Python'],
-      demoUrl: '#',
-      codeUrl: 'https://github.com/theveenranaweera/Sort-Wars',
-    }
-  ];
+
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const projectsContainer = projectsRef.current;
-    if (!section || !projectsContainer) return;
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      const projectsContainer = projectsRef.current;
+      if (!section || !projectsContainer) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none none',
-        once: true
-      }
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      });
 
-    // Animate section title
-    tl.fromTo('.projects-title',
-      {
-        opacity: 0,
-        y: 50
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out'
-      }
-    );
+      // Animate section title
+      tl.fromTo('.projects-title',
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        }
+      );
 
-    // Animate project cards
-    tl.fromTo('.project-card',
-      {
-        opacity: 0,
-        y: 60,
-        scale: 0.95
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: 'back.out(1.7)',
-        stagger: 0.2
-      },
-      '-=0.4'
-    );
+      // Animate project cards
+      tl.fromTo('.project-card',
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.95
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: 'back.out(1.7)',
+          stagger: 0.2
+        },
+        '-=0.4'
+      );
+    }, sectionRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -97,7 +83,7 @@ const Projects = () => {
 
         {/* Grid Layout: Stacks on mobile, 2 columns on large screens */}
         <div ref={projectsRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          {projects.map((project, index) => (
+          {PROJECTS.map((project, index) => (
             <div
               key={index}
               className="project-card glass-card p-8 w-full transition-all duration-300 hover:scale-[1.02] flex flex-col"

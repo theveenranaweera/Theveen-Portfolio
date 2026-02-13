@@ -3,98 +3,66 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+import { SKILL_CATEGORIES } from '@/data/skills';
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
 
-  const skillCategories = [
-    {
-      title: 'Programming Languages',
-      skills: ['C++', 'Python', 'JavaScript', 'HTML', 'CSS', 'Dart', 'SQL']
-    },
-    {
-      title: 'Frontend / UI',
-      skills: ['ReactJS', 'jQuery', 'Bootstrap']
-    },
-    {
-      title: 'Backend & APIs',
-      skills: ['NodeJS', 'ExpressJS', 'REST API']
-    },
-    {
-      title: 'Mobile & Cross-platform',
-      skills: ['Flutter']
-    },
-    {
-      title: 'Databases',
-      skills: ['Firebase']
-    },
-    {
-      title: 'Artificial Intelligence',
-      skills: ['Machine Learning', 'LLMs', 'RAG pipelines']
-    },
-    {
-      title: 'Dev Tools & IDEs',
-      skills: ['Visual Studio Code', 'Microsoft Visual Studio', 'Android Studio', 'Windsurf', 'Cursor']
-    },
-    {
-      title: 'Engineering Practices & Security',
-      skills: ['Agile', 'Object-Oriented Programming', 'Cybersecurity Strategies', 'Documentation']
-    }
-  ];
+
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const skillsContainer = skillsRef.current;
-    if (!section || !skillsContainer) return;
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      const skillsContainer = skillsRef.current;
+      if (!section || !skillsContainer) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none none'
-      }
-    });
-
-    // Animate section title
-    tl.fromTo('.skills-title',
-      {
-        opacity: 0,
-        y: 50
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out'
-      }
-    );
-
-    // Animate skill tags with stagger
-    tl.fromTo('.skill-tag',
-      {
-        opacity: 0,
-        scale: 0.8,
-        y: 20
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'back.out(1.7)',
-        stagger: {
-          amount: 1.2,
-          from: 'start'
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none'
         }
-      },
-      '-=0.4'
-    );
+      });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+      // Animate section title
+      tl.fromTo('.skills-title',
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        }
+      );
+
+      // Animate skill tags with stagger
+      tl.fromTo('.skill-tag',
+        {
+          opacity: 0,
+          scale: 0.8,
+          y: 20
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'back.out(1.7)',
+          stagger: {
+            amount: 1.2,
+            from: 'start'
+          }
+        },
+        '-=0.4'
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -114,7 +82,7 @@ const Skills = () => {
         </div>
 
         <div ref={skillsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
+          {SKILL_CATEGORIES.map((category, index) => (
             <div key={index} className="glass-card p-6">
               <h3 className="text-xl font-heading font-semibold text-gradient-accent mb-4 border-b border-primary/20 pb-2">
                 {category.title}

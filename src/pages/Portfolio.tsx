@@ -17,33 +17,39 @@ gsap.registerPlugin(ScrollTrigger);
 const Portfolio = () => {
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    // Add floating background elements animation
-    gsap.to('.floating-orb', {
-      y: -20,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-      stagger: {
-        amount: 1,
-        from: 'random'
-      }
-    });
-
-    // Add parallax effect to background elements
-    gsap.utils.toArray('.parallax-element').forEach((element: any) => {
-      gsap.to(element, {
-        yPercent: -50,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: element,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
+    const ctx = gsap.context(() => {
+      // Add floating background elements animation
+      gsap.to('.floating-orb', {
+        y: -20,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        stagger: {
+          amount: 1,
+          from: 'random'
         }
       });
-    });
+
+      // Add parallax effect to background elements
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      gsap.utils.toArray('.parallax-element').forEach((element: any) => {
+        gsap.to(element, {
+          yPercent: -50,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+      });
+    }); // Scope not provided as we are using global classes for now, but context helps cleanup
+
+    return () => ctx.revert();
   }, []);
 
 

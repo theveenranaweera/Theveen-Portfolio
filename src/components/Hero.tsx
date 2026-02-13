@@ -18,21 +18,23 @@ const Hero = () => {
 
   useEffect(() => {
     // GSAP animations for initial page load
-    const tl = gsap.timeline({ delay: 0.5 });
-    tl.fromTo(headlineRef.current,
-      { opacity: 0, y: 50, filter: 'blur(10px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: "power3.out" }
-    );
-    tl.fromTo(subtitleRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-      "-=0.6"
-    );
-    tl.fromTo(ctaRef.current,
-      { opacity: 0, y: 20, scale: 0.9 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
-      "-=0.4"
-    );
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.5 });
+      tl.fromTo(headlineRef.current,
+        { opacity: 0, y: 50, filter: 'blur(10px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: "power3.out" }
+      );
+      tl.fromTo(subtitleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+        "-=0.6"
+      );
+      tl.fromTo(ctaRef.current,
+        { opacity: 0, y: 20, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
+        "-=0.4"
+      );
+    }, heroRef);
 
     // Framer Motion animation for greetings
     const greetingInterval = setInterval(() => {
@@ -40,7 +42,7 @@ const Hero = () => {
     }, 2700);
 
     return () => {
-      tl.kill();
+      ctx.revert();
       clearInterval(greetingInterval);
     };
   }, []);

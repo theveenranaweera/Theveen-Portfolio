@@ -9,96 +9,98 @@ import {
   LinkedinLogo
 } from 'phosphor-react';
 
+import { CONTACT_INFO, SOCIAL_LINKS } from '@/constants';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      if (!section) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none none'
-      }
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none'
+        }
+      });
 
-    // Animate section title
-    tl.fromTo('.contact-title',
-      {
-        opacity: 0,
-        y: 50
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out'
-      }
-    );
+      // Animate section title
+      tl.fromTo('.contact-title',
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        }
+      );
 
-    // Animate contact cards
-    tl.fromTo('.contact-card',
-      {
-        opacity: 0,
-        y: 40,
-        scale: 0.9
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: 'back.out(1.7)',
-        stagger: 0.2
-      },
-      '-=0.4'
-    );
+      // Animate contact cards
+      tl.fromTo('.contact-card',
+        {
+          opacity: 0,
+          y: 40,
+          scale: 0.9
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: 'back.out(1.7)',
+          stagger: 0.2
+        },
+        '-=0.4'
+      );
 
-    // Animate social icons
-    tl.fromTo('.social-icon',
-      {
-        opacity: 0,
-        scale: 0.8,
-        y: 20
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'back.out(1.7)',
-        stagger: 0.1
-      },
-      '-=0.3'
-    );
+      // Animate social icons
+      tl.fromTo('.social-icon',
+        {
+          opacity: 0,
+          scale: 0.8,
+          y: 20
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'back.out(1.7)',
+          stagger: 0.1
+        },
+        '-=0.3'
+      );
+    }, sectionRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   const contactInfo = [
     {
       icon: Envelope,
       label: 'Email',
-      value: 'theveend@gmail.com',
-      href: 'mailto:theveend@gmail.com'
+      value: CONTACT_INFO.EMAIL,
+      href: `mailto:${CONTACT_INFO.EMAIL}`
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+94 (70) 303-6321',
-      href: "tel:+94703036321"
+      value: CONTACT_INFO.PHONE,
+      href: `tel:${CONTACT_INFO.PHONE.replace(/[^\d+]/g, '')}`
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Colombo, Sri Lanka',
+      value: CONTACT_INFO.LOCATION,
       href: '#'
     }
   ];
@@ -107,13 +109,13 @@ const Contact = () => {
     {
       icon: GithubLogo,
       label: 'GitHub',
-      href: 'https://github.com/theveenranaweera',
+      href: SOCIAL_LINKS.GITHUB,
       color: 'hover:text-gray-400'
     },
     {
       icon: LinkedinLogo,
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/theveen-ranaweera/',
+      href: SOCIAL_LINKS.LINKEDIN,
       color: 'hover:text-blue-400'
     }
   ];
@@ -184,6 +186,7 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     className={`social-icon w-14 h-14 bg-background-secondary rounded-full flex items-center justify-center border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:glow-primary ${social.color}`}
                   >
                     <Icon size={24} />

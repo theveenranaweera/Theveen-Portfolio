@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { List, X, PaperPlaneTilt } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
+import { throttle } from '@/lib/utils';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ const Navigation = () => {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       // 1. Handle Navbar Visuals (Compact State)
       setIsScrolled(window.scrollY > 50);
 
@@ -55,10 +56,11 @@ const Navigation = () => {
       }
 
       setActiveSection(currentSection);
-    };
+    }, 100);
 
-    // Run once on mount and then on every scroll
+    // Run once on mount
     handleScroll();
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
