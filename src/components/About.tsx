@@ -90,7 +90,7 @@ const About = () => {
                 </p>
 
                 <p>
-                  Currently working as a Software Engineering Intern at Wavenet, I specialize in optimizing, improving and analysing about intelligent
+                  Worked as a Software Engineering Intern at Wavenet, I specialized in optimizing, improving and analysing about intelligent
                   solutions using cutting-edge technologies like RAG pipelines, LLMs, and full-stack development.
                   The limitless potential of AI and its ability to address pressing issues in the real world are what motivate me to pursue a career in technology.
                 </p>

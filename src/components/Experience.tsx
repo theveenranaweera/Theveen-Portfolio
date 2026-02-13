@@ -147,7 +147,7 @@ const Experience = () => {
                       )}
 
                       <div className="flex flex-wrap gap-2">
-                        {exp.skills.map((skill, skillIndex) => (
+                        {exp.skills && exp.skills.map((skill, skillIndex) => (
                           <span
                             key={skillIndex}
                             className="px-3 py-1 text-xs bg-background-secondary text-foreground/80 rounded-full border border-primary/20 hover:border-primary/70 transition-colors duration-300"

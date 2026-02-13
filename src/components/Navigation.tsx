@@ -98,18 +98,19 @@ const Navigation = () => {
             shadow-xl shadow-black/10
             backdrop-blur-xl
             transition-all duration-500
+            w-full md:w-auto md:min-w-max
             ${isScrolled ? 'bg-background/80' : 'bg-background/40'}
           `}
         >
           {/* Logo Section */}
           <button
             onClick={() => scrollToSection('#hero')}
-            className="pl-3 pr-4 group flex items-center gap-2"
+            className="pl-3 pr-4 group flex items-center gap-2 shrink-0"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/50 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
-                src="/tr-logo.svg"
+                src="/tr-logo-no-bg.png"
                 alt="Logo"
                 className="h-8 w-auto object-contain relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
               />

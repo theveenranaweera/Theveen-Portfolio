@@ -5,7 +5,7 @@ export const EXPERIENCES = [
         role: 'Software Engineer Intern',
         company: 'Global Wavenet',
         companyUrl: 'https://www.globalwavenet.com',
-        period: 'July 2025 – Present',
+        period: 'July 2025 – January 2026',
         description: [
             'Implemented a combined RAG workflow using Python enabling unified Azure OCR image search + document search.',
             'Enhanced backend APIs by adding search mode selector API parameter and improved result validation and return consistency.',
@@ -23,7 +23,7 @@ export const EXPERIENCES = [
         companyUrl: 'https://www.lancashire.ac.uk',
         period: 'February 2024 – Present',
         description: 'Pursuing a comprehensive degree in software engineering, focusing on core principles of software development, system design, and practical application through coursework and projects.',
-        skills: ['Software Engineering', 'System Design', 'Project Management', 'Research'],
+
         icon: GraduationCap,
         side: 'right'
     },
@@ -33,7 +33,7 @@ export const EXPERIENCES = [
         companyUrl: 'https://www.lyceum.lk',
         period: 'September 2009 – April 2023',
         description: 'Completed primary, middle, and high school (O/Ls and A/Ls) education following the Cambridge International Curriculum.',
-        skills: ['Cambridge Curriculum', 'Academic Excellence', 'Leadership'],
+
         icon: Student,
         side: 'left'
     }
