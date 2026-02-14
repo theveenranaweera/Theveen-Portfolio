@@ -23,7 +23,6 @@ export const EXPERIENCES = [
         companyUrl: 'https://www.lancashire.ac.uk',
         period: 'February 2024 – Present',
         description: 'Pursuing a comprehensive degree in software engineering, focusing on core principles of software development, system design, and practical application through coursework and projects.',
-
         icon: GraduationCap,
         side: 'right'
     },
@@ -33,7 +32,6 @@ export const EXPERIENCES = [
         companyUrl: 'https://www.lyceum.lk',
         period: 'September 2009 – April 2023',
         description: 'Completed primary, middle, and high school (O/Ls and A/Ls) education following the Cambridge International Curriculum.',
-
         icon: Student,
         side: 'left'
     }
