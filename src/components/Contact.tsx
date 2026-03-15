@@ -138,7 +138,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Contact Info Card */}
-          <div className="contact-card glass-card p-8 hover:glow-primary transition-all duration-300">
+          <div className="contact-card glass-card p-8 hover:glow-primary transition-all duration-300 w-full max-w-md mx-auto">
             <h3 className="text-2xl font-heading font-semibold text-gradient-accent mb-6">
               Contact Information
             </h3>
@@ -166,7 +166,7 @@ const Contact = () => {
           </div>
 
           {/* Connect Card */}
-          <div className="contact-card glass-card p-8 hover:glow-accent transition-all duration-300">
+          <div className="contact-card glass-card p-8 hover:glow-accent transition-all duration-300 w-full max-w-md mx-auto">
             <h3 className="text-2xl font-heading font-semibold text-gradient-accent mb-6">
               Let's Connect
             </h3>
