@@ -79,18 +79,6 @@ const Portfolio = () => {
 
       {/* Footer */}
       <Footer />
-
-      {/* Scroll Indicator */}
-      <div className="fixed bottom-8 right-8 z-40">
-        <div className="w-1 h-16 bg-primary/20 rounded-full overflow-hidden">
-          <div
-            className="w-full bg-primary rounded-full transition-all duration-300"
-            style={{
-              height: `${(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`
-            }}
-          ></div>
-        </div>
-      </div>
     </div>
   );
 };
