@@ -77,11 +77,10 @@ const Experience = () => {
 
   return (
     <section
-      id="experience"
       ref={sectionRef}
       className="min-h-screen py-16 md:py-16 lg:py-24 px-4 flex items-center"
     >
-      <div className="max-w-6xl mx-auto w-full">
+      <div id="experience" className="scroll-anchor max-w-6xl mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="experience-title text-4xl md:text-5xl font-heading font-bold text-gradient-primary mb-4">
             Experience & Education
@@ -94,26 +93,26 @@ const Experience = () => {
         {/* Timeline Container */}
         <div className="relative">
           {/* Central Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full timeline-line origin-top"></div>
+          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full timeline-line origin-top"></div>
 
           {/* Timeline Entries */}
           <div className="space-y-12">
-            {EXPERIENCES.map((exp, index) => {
+            {EXPERIENCES.map((exp) => {
               const Icon = exp.icon;
               return (
                 <div
-                  key={index}
+                  key={`${exp.role}-${exp.company}`}
                   className="timeline-entry relative flex md:justify-between items-center"
                   data-side={exp.side}
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 timeline-dot flex items-center justify-center">
+                  <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 timeline-dot flex items-center justify-center">
                     <Icon size={16} className="text-primary-foreground" />
                   </div>
 
                   {/* Content Card */}
                   <div
-                    className={`w-full md:w-[48%] ${exp.side === 'left' ? 'md:pr-4' : 'md:pl-4 ml-auto'
+                    className={`w-full md:w-[48%] pl-12 md:pl-0 ${exp.side === 'left' ? 'md:pr-4' : 'md:pl-4 ml-auto'
                       }`}
                   >
                     <div className="glass-card p-6 transition-all duration-300">

@@ -17,7 +17,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Portfolio = () => {
 
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Add floating background elements animation
@@ -34,8 +33,7 @@ const Portfolio = () => {
       });
 
       // Add parallax effect to background elements
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      gsap.utils.toArray('.parallax-element').forEach((element: any) => {
+      gsap.utils.toArray<Element>('.parallax-element').forEach((element) => {
         gsap.to(element, {
           yPercent: -50,
           ease: 'none',

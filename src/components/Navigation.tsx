@@ -1,87 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { List, X, PaperPlaneTilt } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
-import { throttle } from '@/lib/utils';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('#hero');
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
-  ];
+  ], []);
 
-  useEffect(() => {
-    const handleScroll = throttle(() => {
-      // 1. Handle Navbar Visuals (Compact State)
-      setIsScrolled(window.scrollY > 50);
-
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-
-      // 2. "Bottom of Page" Detection (Crucial for Contact section)
-      // If user is near the bottom, force the last section (Contact) to be active
-      if (scrollY + windowHeight >= documentHeight - 50) {
-        setActiveSection('#contact');
-        return;
-      }
-
-      // 3. Standard Scroll Spy Logic
-      // We use a "focus point" that is 40% down the screen.
-      // As soon as a section's top crosses this line, it becomes active.
-      const focusPoint = scrollY + (windowHeight * 0.4);
-
-      // Check sections in reverse to find the last one that has passed the focus point
-      let currentSection = '#hero'; // Default to hero/top
-
-      // Create a full list including Contact for checking
-      const allLinks = [...navLinks, { name: 'Contact', href: '#contact' }];
-
-      for (let i = allLinks.length - 1; i >= 0; i--) {
-        const link = allLinks[i];
-        const section = document.querySelector(link.href) as HTMLElement | null;
-
-        if (section) {
-          // If the section top is above our focus point, it's the active one
-          if (section.offsetTop <= focusPoint) {
-            currentSection = link.href;
-            break;
-          }
-        }
-      }
-
-      setActiveSection(currentSection);
-    }, 100);
-
-    // Run once on mount
-    handleScroll();
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { activeSection, isScrolled, navRef } = useActiveSection(navLinks);
 
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href) as HTMLElement | null;
     if (!element) return;
 
-    element.scrollIntoView({
-      behavior: 'smooth',
-    });
+    element.scrollIntoView();
     setIsOpen(false);
   };
 
   return (
     <>
       {/* Ambient Glow behind navbar */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[500px] h-24 bg-primary/20 blur-[100px] pointer-events-none z-40 opacity-50" />
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] h-24 bg-primary/20 blur-[100px] pointer-events-none z-40 opacity-50" />
 
       <nav
+        ref={navRef}
         className={`
           fixed left-1/2 -translate-x-1/2 z-50
           transition-all duration-500 ease-in-out
@@ -179,6 +128,7 @@ const Navigation = () => {
             absolute top-full left-0 right-0 mt-3 p-4
             glass-card rounded-3xl border border-white/10
             flex flex-col gap-2
+            max-h-[calc(100vh-100px)] overflow-y-auto
             origin-top transition-all duration-300 ease-out
             ${isOpen ? 'opacity-100 scale-100 translate-y-0 visible' : 'opacity-0 scale-95 -translate-y-4 invisible'}
           `}

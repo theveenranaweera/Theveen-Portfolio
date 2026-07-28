@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'phosphor-react';
+import { ArrowDown } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
+
+const GREETINGS = [
+  'Hello', '你好', '嗨', 'Hola', 'नमस्ते', 'مرحبا',
+  'Olá', 'হ্যালো', 'Привет', 'こんにちは', 'Hallo', 'ආයුබෝවන්'
+];
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -10,10 +15,6 @@ const Hero = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  const greetings = [
-    'Hello', '你好', '嗨', 'Hola', 'नमस्ते', 'مرحبا',
-    'Olá', 'হ্যালো', 'Привет', 'こんにちは', 'Hallo', 'ආයුබෝවන්'
-  ];
   const [greetingIndex, setGreetingIndex] = useState(0);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Hero = () => {
 
     // Framer Motion animation for greetings
     const greetingInterval = setInterval(() => {
-      setGreetingIndex(prevIndex => (prevIndex + 1) % greetings.length);
+      setGreetingIndex(prevIndex => (prevIndex + 1) % GREETINGS.length);
     }, 2700);
 
     return () => {
@@ -71,7 +72,7 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
         <h1
           ref={headlineRef}
-          className="text-[38.4px] md:text-[64px] lg:text-[76px] font-heading font-bold mb-2 leading-tight"
+          className="text-hero-sm md:text-hero-md lg:text-hero-lg font-heading font-bold mb-2 leading-tight"
         >
           <AnimatePresence mode="wait">
             <motion.span
@@ -82,19 +83,19 @@ const Hero = () => {
               transition={{ duration: 0.3, ease: 'easeInOut' }}
               className="inline-block"
             >
-              {greetings[greetingIndex]}
+              {GREETINGS[greetingIndex]}
             </motion.span>
           </AnimatePresence>, I'm{' '}
           <span className="text-gradient-primary">Theveen</span>
           <br />
-          <span className="text-[24px] md:text-[38.4px] lg:text-[32px] text-foreground/80 block mt-5">
+          <span className="text-sub-base md:text-sub-md lg:text-sub-lg text-foreground/80 block mt-5">
             Software Engineer & AI Addict!
           </span>
         </h1>
 
         <p
           ref={subtitleRef}
-          className="text-[16px] md:text-[18px] text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-body-base md:text-body-lg text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
         >
           I'm currently a Software Engineering undergraduate learning to craft intelligent solutions with cutting-edge technology,
           from machine learning pipelines to full-stack applications.
@@ -104,12 +105,12 @@ const Hero = () => {
           <Button
             onClick={scrollToContact}
             size="lg"
-            className="group bg-primary hover:bg-primary-dark text-primary-foreground px-8 py-4 text-[14.4px] font-semibold rounded-xl glow-primary transition-all duration-300 hover:scale-105"
+            className="group bg-primary hover:bg-primary-dark !text-black px-8 py-4 text-cta font-semibold rounded-xl glow-primary transition-all duration-300 hover:scale-105"
           >
             Hire Me
-            <ArrowRight
+            <ArrowDown
               size={20}
-              className="ml-2 group-hover:translate-x-1 transition-transform duration-300"
+              className="ml-2 transition-transform duration-300"
             />
           </Button>
 
@@ -117,7 +118,7 @@ const Hero = () => {
             variant="outline"
             size="lg"
             onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 text-[14.4px] font-semibold rounded-xl border-primary/30 text-primary hover:text-primary hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 hover:scale-105"
+            className="px-8 py-4 text-cta font-semibold rounded-xl border-primary/30 text-primary hover:text-primary hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 hover:scale-105"
           >
             Learn More
           </Button>

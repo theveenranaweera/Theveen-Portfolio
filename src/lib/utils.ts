@@ -12,11 +12,10 @@ export function cn(...inputs: ClassValue[]) {
  * @param limit The time limit in milliseconds
  * @returns A throttled version of the function
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => void {
+export function throttle<Args extends unknown[], R>(func: (this: unknown, ...args: Args) => R, limit: number): (this: unknown, ...args: Args) => void {
   let inThrottle: boolean;
 
-  return function (this: any, ...args: Parameters<T>) {
+  return function (this: unknown, ...args: Args) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const context = this;
     if (!inThrottle) {

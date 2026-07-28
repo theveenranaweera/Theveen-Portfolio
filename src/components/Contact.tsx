@@ -122,11 +122,10 @@ const Contact = () => {
 
   return (
     <section
-      id="contact"
       ref={sectionRef}
       className="py-20 md:py-28 px-4 flex items-center"
     >
-      <div className="max-w-4xl mx-auto w-full">
+      <div id="contact" className="scroll-anchor max-w-4xl mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="contact-title text-4xl md:text-5xl font-heading font-bold text-gradient-primary mb-4">
             Let's Connect
@@ -143,11 +142,11 @@ const Contact = () => {
               Contact Information
             </h3>
             <div className="space-y-6">
-              {contactInfo.map((info, index) => {
+              {contactInfo.map((info) => {
                 const Icon = info.icon;
                 return (
                   <div
-                    key={index}
+                    key={info.label}
                     className="flex items-center space-x-4 p-3 rounded-full hover:bg-primary/10 transition-all duration-300 group"
                   >
                     <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center group-hover:bg-primary/30 group-hover:glow-primary transition-all duration-300">
@@ -178,11 +177,11 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="flex justify-center space-x-6">
-              {socialLinks.map((social, index) => {
+              {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
                   <a
-                    key={index}
+                    key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"

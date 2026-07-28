@@ -57,11 +57,10 @@ const About = () => {
 
   return (
     <section
-      id="about"
       ref={sectionRef}
       className="py-24 md:py-32 px-6 overflow-hidden relative bg-transparent"
     >
-      <div className="max-w-7xl mx-auto">
+      <div id="about" className="scroll-anchor max-w-7xl mx-auto">
 
         {/* Header - Reverted to Original */}
         <div className="text-center mb-16">
@@ -134,10 +133,10 @@ const About = () => {
                 <div className="p-4 bg-background/80 backdrop-blur-md border-t border-border/50 flex justify-center rounded-b-lg">
                   <Button
                     onClick={handleResumeDownload}
-                    className="group w-auto bg-primary hover:bg-primary-dark text-primary-foreground px-8 py-4 text-[14.4px] font-semibold rounded-xl glow-primary transition-all duration-300 hover:scale-105"
+                    className="group w-auto bg-primary hover:bg-primary-dark text-black px-8 py-4 text-[14.4px] font-semibold rounded-xl glow-primary transition-all duration-300 hover:scale-105"
                     size="lg"
                   >
-                    <Download size={20} className="mr-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    <Download size={20} className="mr-2 transition-transform duration-300" />
                     Download
                   </Button>
                 </div>

@@ -67,11 +67,10 @@ const Skills = () => {
 
   return (
     <section
-      id="skills"
       ref={sectionRef}
       className="py-20 md:py-28 px-4 flex items-center"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div id="skills" className="scroll-anchor max-w-7xl mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="skills-title text-4xl md:text-5xl font-heading font-bold text-gradient-primary mb-4">
             Skills & Technologies

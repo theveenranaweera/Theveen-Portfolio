@@ -67,11 +67,10 @@ const Projects = () => {
 
   return (
     <section
-      id="projects"
       ref={sectionRef}
       className="py-20 md:py-28 px-4 flex items-center bg-transparent"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div id="projects" className="scroll-anchor max-w-7xl mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="projects-title text-4xl md:text-5xl font-heading font-bold text-gradient-primary mb-4">
             Featured Projects
@@ -83,9 +82,9 @@ const Projects = () => {
 
         {/* Grid Layout: Stacks on mobile, 2 columns on large screens */}
         <div ref={projectsRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          {PROJECTS.map((project, index) => (
+          {PROJECTS.map((project) => (
             <div
-              key={index}
+              key={project.title}
               className="project-card glass-card p-8 w-full transition-all duration-300 hover:scale-[1.02] flex flex-col"
             >
               {/* Project Header */}
@@ -104,9 +103,9 @@ const Projects = () => {
               <div className="mb-8">
                 <h4 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Key Technologies</h4>
                 <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech, techIndex) => (
+                  {project.techStack.map((tech) => (
                     <span
-                      key={techIndex}
+                      key={tech}
                       className="px-3 py-1 text-xs bg-background-secondary text-foreground/80 rounded-full border border-primary/20 hover:border-primary/70 transition-colors duration-300"
                     >
                       {tech}

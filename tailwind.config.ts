@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.{ts,tsx}", "./index.html"],
   prefix: "",
   theme: {
     container: {
@@ -75,6 +76,17 @@ export default {
         md: "var(--radius)",
         sm: "calc(var(--radius) - 4px)",
         xl: "var(--radius-xl)",
+      },
+      fontSize: {
+        'hero-lg': ['76px', { lineHeight: '1.1' }],
+        'hero-md': ['64px', { lineHeight: '1.1' }],
+        'hero-sm': ['38.4px', { lineHeight: '1.2' }],
+        'sub-lg': ['32px', { lineHeight: '1.3' }],
+        'sub-md': ['38.4px', { lineHeight: '1.3' }],
+        'sub-base': ['24px', { lineHeight: '1.4' }],
+        'body-lg': ['18px', { lineHeight: '1.6' }],
+        'body-base': ['16px', { lineHeight: '1.6' }],
+        'cta': ['14.4px', { lineHeight: '1.5' }],
       },
       fontFamily: {
         heading: "var(--font-heading)",

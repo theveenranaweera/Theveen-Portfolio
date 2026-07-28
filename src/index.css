@@ -80,6 +80,15 @@
     font-size: 95%;
   }
   
+  section {
+    /* Keep for Hero section which still has the id on the section */
+    scroll-margin-top: var(--nav-height, 6rem);
+  }
+  
+  .scroll-anchor {
+    scroll-margin-top: var(--nav-height, 6rem);
+  }
+  
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
