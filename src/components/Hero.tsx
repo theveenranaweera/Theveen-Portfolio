@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown } from 'phosphor-react';
-import { Button } from '@/components/ui/button';
 
 const GREETINGS = [
   'Hello', '你好', '嗨', 'Hola', 'नमस्ते', 'مرحبا',
@@ -13,7 +11,6 @@ const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
 
   const [greetingIndex, setGreetingIndex] = useState(0);
 
@@ -30,11 +27,6 @@ const Hero = () => {
         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
         "-=0.6"
       );
-      tl.fromTo(ctaRef.current,
-        { opacity: 0, y: 20, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
-        "-=0.4"
-      );
     }, heroRef);
 
     // Framer Motion animation for greetings
@@ -48,18 +40,11 @@ const Hero = () => {
     };
   }, []);
 
-  const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section
       id="hero"
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center relative overflow-hidden pt-20"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
@@ -69,59 +54,45 @@ const Hero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
+      <div className="relative z-10 text-left max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
         <h1
           ref={headlineRef}
-          className="text-hero-sm md:text-hero-md lg:text-hero-lg font-heading font-bold mb-2 leading-tight"
+          className="text-5xl sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem] font-heading font-bold mb-8 leading-[1.1] tracking-tight"
         >
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={greetingIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="inline-block"
-            >
-              {GREETINGS[greetingIndex]}
-            </motion.span>
-          </AnimatePresence>, I'm{' '}
-          <span className="text-gradient-primary">Theveen</span>
-          <br />
-          <span className="text-sub-base md:text-sub-md lg:text-sub-lg text-foreground/80 block mt-5">
-            Software Engineer & AI Addict!
-          </span>
+          <div className="block text-foreground">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={greetingIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="inline-block"
+              >
+                {GREETINGS[greetingIndex]}
+              </motion.span>
+            </AnimatePresence>, I'm Theveen
+          </div>
+          <div className="mt-2 sm:mt-0 bg-gradient-to-r from-[#4382DF] via-[#4988C4] to-[#94B4C1] text-transparent bg-clip-text w-fit">
+            <div className="block">
+              Software Engineer
+            </div>
+            <div className="block mt-2 sm:mt-0">
+              & AI Addict!
+            </div>
+          </div>
         </h1>
 
-        <p
-          ref={subtitleRef}
-          className="text-body-base md:text-body-lg text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
-        >
-          I'm currently a Software Engineering undergraduate learning to craft intelligent solutions with cutting-edge technology,
-          from machine learning pipelines to full-stack applications.
-        </p>
-
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 items-center justify-center">
-          <Button
-            onClick={scrollToContact}
-            size="lg"
-            className="group bg-primary hover:bg-primary-dark !text-black px-8 py-4 text-cta font-semibold rounded-xl glow-primary transition-all duration-300 hover:scale-105"
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mt-8 md:mt-12">
+          <p
+            ref={subtitleRef}
+            className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-2xl font-medium leading-relaxed"
           >
-            Hire Me
-            <ArrowDown
-              size={20}
-              className="ml-2 transition-transform duration-300"
-            />
-          </Button>
+            I'm currently a Software Engineering undergraduate learning to craft intelligent solutions with cutting-edge technology,
+            from machine learning pipelines to full-stack applications.
+          </p>
 
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 text-cta font-semibold rounded-xl border-primary/30 text-primary hover:text-primary hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 hover:scale-105"
-          >
-            Learn More
-          </Button>
+
         </div>
       </div>
 
