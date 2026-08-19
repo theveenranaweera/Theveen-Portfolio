@@ -3,10 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Envelope,
-  Phone,
-  MapPin,
-  GithubLogo,
-  LinkedinLogo
+  LinkedinLogo,
+  GithubLogo
 } from 'phosphor-react';
 
 import { CONTACT_INFO, SOCIAL_LINKS } from '@/constants';
@@ -44,6 +42,21 @@ const Contact = () => {
         }
       );
 
+      // Animate section subtitle
+      tl.fromTo('.contact-subtitle',
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        },
+        '-=0.6'
+      );
+
       // Animate contact cards
       tl.fromTo('.contact-card',
         {
@@ -61,62 +74,41 @@ const Contact = () => {
         },
         '-=0.4'
       );
-
-      // Animate social icons
-      tl.fromTo('.social-icon',
-        {
-          opacity: 0,
-          scale: 0.8,
-          y: 20
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'back.out(1.7)',
-          stagger: 0.1
-        },
-        '-=0.3'
-      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const contactInfo = [
+  const contactCards = [
     {
       icon: Envelope,
       label: 'Email',
-      value: CONTACT_INFO.EMAIL,
-      href: `mailto:${CONTACT_INFO.EMAIL}`
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: CONTACT_INFO.PHONE,
-      href: `tel:${CONTACT_INFO.PHONE.replace(/[^\d+]/g, '')}`
-    },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: CONTACT_INFO.LOCATION,
-      href: '#'
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: GithubLogo,
-      label: 'GitHub',
-      href: SOCIAL_LINKS.GITHUB,
-      color: 'hover:text-gray-400'
+      title: 'Get in touch',
+      href: `mailto:${CONTACT_INFO.EMAIL}`,
+      cardHover: 'hover:glow-primary',
+      iconHover: 'group-hover:border-primary/50 group-hover:bg-primary/5',
+      iconColor: 'group-hover:text-primary',
+      textHover: 'group-hover:text-primary'
     },
     {
       icon: LinkedinLogo,
       label: 'LinkedIn',
+      title: 'Connect with me',
       href: SOCIAL_LINKS.LINKEDIN,
-      color: 'hover:text-blue-400'
+      cardHover: 'hover:shadow-[0_0_25px_rgba(65,105,225,0.3)]',
+      iconHover: 'group-hover:border-[#4169E1]/50 group-hover:bg-[#4169E1]/5',
+      iconColor: 'group-hover:text-[#4169E1]',
+      textHover: 'group-hover:text-[#4169E1]'
+    },
+    {
+      icon: GithubLogo,
+      label: 'GitHub',
+      title: 'View my code',
+      href: SOCIAL_LINKS.GITHUB,
+      cardHover: 'hover:shadow-[0_0_25px_rgba(156,163,175,0.3)]',
+      iconHover: 'group-hover:border-gray-400/50 group-hover:bg-gray-400/5',
+      iconColor: 'group-hover:text-gray-400',
+      textHover: 'group-hover:text-gray-400'
     }
   ];
 
@@ -125,75 +117,37 @@ const Contact = () => {
       ref={sectionRef}
       className="py-20 md:py-28 px-4 flex items-center"
     >
-      <div id="contact" className="scroll-anchor max-w-4xl mx-auto w-full">
+      <div id="contact" className="scroll-anchor max-w-5xl mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="contact-title text-4xl md:text-5xl font-heading font-bold text-gradient-primary mb-4">
             Let's Connect
           </h2>
-          <p className="text-[16px] text-muted-foreground max-w-2xl mx-auto mb-2">
+          <p className="contact-subtitle text-[16px] text-muted-foreground max-w-2xl mx-auto mb-2">
             Come on up here...feel free to reach out!
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Contact Info Card */}
-          <div className="contact-card glass-card p-8 hover:glow-primary transition-all duration-300 w-full max-w-md mx-auto">
-            <h3 className="text-2xl font-heading font-semibold text-gradient-accent mb-6">
-              Contact Information
-            </h3>
-            <div className="space-y-6">
-              {contactInfo.map((info) => {
-                const Icon = info.icon;
-                return (
-                  <div
-                    key={info.label}
-                    className="flex items-center space-x-4 p-3 rounded-full hover:bg-primary/10 transition-all duration-300 group"
-                  >
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center group-hover:bg-primary/30 group-hover:glow-primary transition-all duration-300">
-                      <Icon size={20} className="text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
-                      <p className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">
-                        {info.value}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Connect Card */}
-          <div className="contact-card glass-card p-8 hover:glow-accent transition-all duration-300 w-full max-w-md mx-auto">
-            <h3 className="text-2xl font-heading font-semibold text-gradient-accent mb-6">
-              Let's Connect
-            </h3>
-            <p className="text-foreground/80 mb-8 leading-relaxed">
-              Follow me on social media to stay updated with my latest projects,
-              insights, and tech adventures. Always open to networking and
-              discussing innovative ideas!
-            </p>
-
-            {/* Social Links */}
-            <div className="flex justify-center space-x-6">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className={`social-icon w-14 h-14 bg-background-secondary rounded-full flex items-center justify-center border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:glow-primary ${social.color}`}
-                  >
-                    <Icon size={24} />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+        <div className="flex flex-col max-w-sm mx-auto gap-5 w-full">
+          {contactCards.map((card) => {
+            const Icon = card.icon;
+            return (
+              <a
+                key={card.label}
+                href={card.href}
+                target={card.href.startsWith('mailto') ? '_self' : '_blank'}
+                rel="noopener noreferrer"
+                className={`contact-card glass-card p-5 rounded-2xl flex items-center gap-5 transition-all duration-300 group cursor-pointer hover:-translate-y-1 ${card.cardHover}`}
+              >
+                <div className={`w-14 h-14 shrink-0 rounded-full border border-primary/20 flex items-center justify-center transition-all duration-300 ${card.iconHover}`}>
+                  <Icon size={24} className={`text-foreground/70 transition-colors duration-300 ${card.iconColor}`} />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-sm text-muted-foreground font-medium mb-1">{card.label}</span>
+                  <span className={`text-lg font-heading font-semibold text-foreground transition-colors duration-300 ${card.textHover}`}>{card.title}</span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
