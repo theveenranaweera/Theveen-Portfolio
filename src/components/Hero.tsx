@@ -54,7 +54,7 @@ const Hero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-left max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
+      <div className="relative z-10 text-left max-w-7xl mx-auto pr-4 sm:pr-8 lg:pr-12 w-full">
         <h1
           ref={headlineRef}
           className="text-5xl sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem] font-heading font-bold mb-8 leading-[1.1] tracking-tight"
