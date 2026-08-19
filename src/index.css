@@ -14,14 +14,14 @@
     
     /* Glass/Card Colors */
     --glass: 220 26% 12%;            /* Glassmorphic card background */
-    --glass-border: 200 50% 50%;     /* Cyan glass borders */
-    --glass-glow: 195 100% 75%;      /* Bright cyan glow */
+    --glass-border: 205 50% 50%;     /* Blue glass borders */
+    --glass-glow: 205 100% 81%;      /* Bright blue glow */
     
     /* Primary Brand Colors */
-    --primary: 195 100% 75%;         /* Bright cyan */
-    --primary-glow: 195 100% 85%;    /* Lighter cyan for glows */
-    --primary-dark: 195 100% 65%;    /* Darker cyan for hover states */
-    --primary-foreground: 220 26% 8%; /* Dark text on cyan */
+    --primary: 205 100% 81%;         /* Bright blue (#9dd6ff) */
+    --primary-glow: 205 100% 90%;    /* Lighter blue for glows */
+    --primary-dark: 205 100% 70%;    /* Darker blue for hover states */
+    --primary-foreground: 220 26% 8%; /* Dark text on blue */
     
     /* Secondary Colors */
     --secondary: 220 22% 16%;        /* Dark cards */
@@ -41,7 +41,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 220 20% 25%;
     --input: 220 20% 18%;
-    --ring: 195 100% 75%;
+    --ring: 205 100% 81%;
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-secondary)) 50%, hsl(var(--background-tertiary)) 100%);

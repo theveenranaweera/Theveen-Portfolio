@@ -73,7 +73,7 @@ const Hero = () => {
               </motion.span>
             </AnimatePresence>, I'm Theveen
           </div>
-          <div className="mt-2 sm:mt-0 bg-gradient-to-r from-[#4382DF] via-[#4988C4] to-[#94B4C1] text-transparent bg-clip-text w-fit">
+          <div className="mt-2 sm:mt-0 bg-gradient-to-r from-[#4382DF] via-[#4988C4] to-[#90CAF9] text-transparent bg-clip-text w-fit">
             <div className="block">
               Software Engineer
             </div>
