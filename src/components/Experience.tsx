@@ -134,15 +134,19 @@ const Experience = () => {
                       </div>
 
                       {Array.isArray(exp.description) ? (
-                        <ul className="text-foreground/80 mb-4 leading-relaxed space-y-2 list-disc list-inside">
+                        <ul className="text-foreground/80 mb-6 space-y-4">
                           {exp.description.map((item, idx) => (
-                            <li key={idx}>{item}</li>
+                            <li key={idx} className="flex gap-4 items-start">
+                              <span className="text-muted-foreground/60 font-medium mt-[2px] shrink-0">→</span>
+                              <span className="flex-1 leading-relaxed">{item}</span>
+                            </li>
                           ))}
                         </ul>
                       ) : (
-                        <p className="text-foreground/80 mb-4 leading-relaxed text-justify">
-                          {exp.description}
-                        </p>
+                        <div className="flex gap-4 items-start text-foreground/80 mb-6">
+                          <span className="text-muted-foreground/60 font-medium mt-[2px] shrink-0">→</span>
+                          <span className="flex-1 leading-relaxed text-justify">{exp.description}</span>
+                        </div>
                       )}
 
                       <div className="flex flex-wrap gap-2">
