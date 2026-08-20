@@ -85,7 +85,7 @@ const Contact = () => {
       label: 'Email',
       title: 'Get in touch',
       href: `mailto:${CONTACT_INFO.EMAIL}`,
-      cardHover: 'hover:glow-primary',
+      cardHover: 'hover:shadow-[0_0_25px_rgba(157,214,255,0.3)]',
       iconHover: 'group-hover:border-primary/50 group-hover:bg-primary/5',
       iconColor: 'group-hover:text-primary',
       textHover: 'group-hover:text-primary'
