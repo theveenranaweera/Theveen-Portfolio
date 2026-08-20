@@ -62,26 +62,70 @@ const About = () => {
 
           {/* Bio Text */}
           <div ref={contentRef} className="space-y-6">
-            <div className="glass-card p-10 md:p-12 min-h-[450px] flex flex-col justify-center">
-              <h3 className="text-2xl font-heading font-semibold text-gradient-accent mb-6">
-                Hello! I'm Theveen Ranaweera
-              </h3>
-
-              <div className="space-y-4 text-foreground/80 leading-relaxed text-justify">
-                <p>
-                  I'm a passionate Software Engineer currently pursuing my BSc (Hons) in Software Engineering at UCLan,
-                  with a deep fascination for artificial intelligence and machine learning technologies.
+            <div className="glass-card p-8 md:p-10 min-h-[450px] flex flex-col justify-center">
+              <div className="space-y-8 text-foreground/80 leading-relaxed text-left">
+                <p className="text-lg text-foreground">
+                  I'm a Software Engineering Undergraduate driven by genuine curiosity for artificial intelligence and a
+                  passion for turning complex tech into tools that actually make life better.
                 </p>
 
-                <p>
-                  Worked as a Software Engineering Intern at Wavenet, I specialized in optimizing, improving and analysing about intelligent
-                  solutions using cutting-edge technologies like RAG pipelines, LLMs, and full-stack development.
-                  The limitless potential of AI and its ability to address pressing issues in the real world are what motivate me to pursue a career in technology.
-                </p>
+                <div className="space-y-4">
+                  <h4 className="text-xl font-heading font-semibold text-gradient-accent">Current Focus</h4>
+                  <ul className="space-y-3 text-sm md:text-base">
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span>Pursuing my Software Engineering degree at the University of Lancashire (aiming high with predicted First Class Honours) while obsessing over clean code and modern tech stacks.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span>Diving deep into intelligent systems crafting smart RAG pipelines and exploring how LLMs can solve real-world problems.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span>Leveling up my engineering toolkit, from algorithmic optimization to full-scale software architecture.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-xl font-heading font-semibold text-gradient-accent">What I Bring to the Table</h4>
+                  <ul className="space-y-3 text-sm md:text-base">
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span><strong className="font-semibold text-foreground">Intelligent AI Solutions:</strong> Practical, Python-driven RAG workflows that blend OCR document search, smart context enrichment, and snappy API design.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span><strong className="font-semibold text-foreground">User-First Applications:</strong> Intuitive, responsive mobile apps built with Flutter, Firebase, and Node.js that are made for real people to use every day.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span><strong className="font-semibold text-foreground">Solid Engineering Foundations:</strong> Memory-safe C++ systems, benchmarked data pipelines, and a healthy respect for performance and data integrity.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-xl font-heading font-semibold text-gradient-accent">Milestones I'm Proud Of</h4>
+                  <ul className="space-y-3 text-sm md:text-base">
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span><strong className="font-semibold text-foreground">Global Wavenet Internship:</strong> Engineered unified OCR and document search pipelines, shipping production-ready AI improvements and fine-tuning backend APIs.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span><strong className="font-semibold text-foreground">GluCure Plus:</strong> Built a dedicated daily health-tracking Flutter app serving 500+ users with real-time Firestore sync and automated product lookups.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-4 mt-[5px] text-[10px] text-primary">○</span>
+                      <span><strong className="font-semibold text-foreground">Agile Leadership:</strong> Stepped up as Product Owner for an AR navigation prototype, bridging the gap between client expectations, UI design, and interactive Unity development.</span>
+                    </li>
+                  </ul>
+                </div>
 
                 <div className="h-px w-full my-6 bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
 
-                <p>
+                <p className="text-sm md:text-base">
                   When I'm not coding, I love exploring new music, experimenting with songs as a singer,
                   or staying active at the gym and in the pool as a swimmer.
                 </p>
