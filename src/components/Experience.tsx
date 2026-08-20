@@ -80,7 +80,7 @@ const Experience = () => {
       ref={sectionRef}
       className="min-h-screen py-16 md:py-16 lg:py-24 px-4 flex items-center"
     >
-      <div id="experience" className="scroll-anchor max-w-6xl mx-auto w-full">
+      <div id="experience" className="scroll-anchor max-w-7xl mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="experience-title text-4xl md:text-5xl font-heading font-bold text-gradient-primary mb-4">
             Experience & Education
@@ -115,7 +115,7 @@ const Experience = () => {
                     className={`w-full md:w-[48%] pl-12 md:pl-0 ${exp.side === 'left' ? 'md:pr-4' : 'md:pl-4 ml-auto'
                       }`}
                   >
-                    <div className="glass-card p-6 transition-all duration-300">
+                    <div className="glass-card p-8 transition-all duration-300">
                       <div className="mb-4">
                         <h3 className="text-xl font-heading font-semibold text-gradient-accent mb-2">
                           {exp.role}
