@@ -1,16 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Download } from 'phosphor-react';
-import { Button } from '@/components/ui/button';
-import { RESUME_LINK, RESUME_PREVIEW_LINK } from '@/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,21 +35,10 @@ const About = () => {
         { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
         '-=0.6'
       );
-
-      // Slide resume from right
-      tl.fromTo(imageRef.current,
-        { x: 50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' },
-        '-=0.6'
-      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
-
-  const handleResumeDownload = () => {
-    window.open(RESUME_LINK, '_blank');
-  };
 
   return (
     <section
@@ -72,12 +57,12 @@ const About = () => {
           </p>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* Main Content */}
+        <div className="max-w-3xl mx-auto items-center">
 
-          {/* Left Column: Bio Text - Reverted to Original Design */}
+          {/* Bio Text */}
           <div ref={contentRef} className="space-y-6">
-            <div className="glass-card p-8">
+            <div className="glass-card p-10 md:p-12 min-h-[450px] flex flex-col justify-center">
               <h3 className="text-2xl font-heading font-semibold text-gradient-accent mb-6">
                 Hello! I'm Theveen Ranaweera
               </h3>
@@ -100,46 +85,6 @@ const About = () => {
                   When I'm not coding, I love exploring new music, experimenting with songs as a singer,
                   or staying active at the gym and in the pool as a swimmer.
                 </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Resume Preview - New Layout, No Shadow */}
-          <div ref={imageRef} className="flex flex-col items-center lg:items-end">
-            <div className="relative w-full max-w-md">
-
-              {/* Card Container - No offset shadow */}
-              <div className="glass-card p-2 md:p-3 rounded-xl overflow-hidden bg-background/50 backdrop-blur-sm border border-white/10">
-                {/* Resume Header Bar */}
-                <div className="flex items-center justify-between px-4 py-3 bg-muted/50 rounded-t-lg border-b border-border/50">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                    <div className="w-3 h-3 rounded-full bg-amber-400/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-400/80" />
-                  </div>
-                  <span className="text-xs font-mono text-muted-foreground">resume.pdf</span>
-                </div>
-
-                {/* Iframe Wrapper - Aspect Ratio 1:1.414 (A4 Paper) */}
-                <div className="relative w-full aspect-[1/1.414] bg-white overflow-hidden shadow-inner">
-                  <iframe
-                    src={RESUME_PREVIEW_LINK}
-                    className="absolute top-0 left-0 w-full h-full border-0 transform scale-[1.02] origin-top"
-                    title="Resume Preview"
-                  />
-                </div>
-
-                {/* Download Action Area */}
-                <div className="p-4 bg-background/80 backdrop-blur-md border-t border-border/50 flex justify-center rounded-b-lg">
-                  <Button
-                    onClick={handleResumeDownload}
-                    className="group w-auto bg-primary hover:bg-primary-dark text-black px-8 py-4 text-[14.4px] font-semibold rounded-xl glow-primary transition-all duration-300 hover:scale-105"
-                    size="lg"
-                  >
-                    <Download size={20} className="mr-2 transition-transform duration-300" />
-                    Download
-                  </Button>
-                </div>
               </div>
             </div>
           </div>

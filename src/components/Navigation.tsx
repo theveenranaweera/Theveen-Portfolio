@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
-import { List, X, PaperPlaneTilt } from 'phosphor-react';
+import { List, X, PaperPlaneTilt, ArrowUpRight } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { RESUME_LINK } from '@/constants';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ const Navigation = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
   ], []);
 
   const { activeSection, isScrolled, navRef } = useActiveSection(navLinks);
@@ -92,20 +94,15 @@ const Navigation = () => {
             })}
           </div>
 
-          {/* Contact CTA */}
+          {/* Resume CTA */}
           <div className="hidden md:flex pl-4 pr-1">
             <Button
-              onClick={() => scrollToSection('#contact')}
+              onClick={() => window.open(RESUME_LINK, '_blank')}
               size="sm"
-              className={`
-                rounded-full transition-all duration-300
-                ${activeSection === '#contact'
-                  ? 'bg-primary text-primary-foreground shadow-[0_0_20px_rgba(var(--primary),0.5)]'
-                  : 'bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground'}
-              `}
+              className="rounded-full transition-all duration-300 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
             >
-              Contact
-              <PaperPlaneTilt weight="bold" className="ml-2 h-4 w-4" />
+              Resume
+              <ArrowUpRight weight="bold" className="ml-2 h-4 w-4" />
             </Button>
           </div>
 
@@ -153,11 +150,11 @@ const Navigation = () => {
           <Button
             className="w-full mt-2 rounded-xl bg-primary text-primary-foreground"
             onClick={() => {
-              scrollToSection('#contact');
+              window.open(RESUME_LINK, '_blank');
               setIsOpen(false);
             }}
           >
-            Contact Me <PaperPlaneTilt weight="bold" className="ml-2" />
+            Resume <ArrowUpRight weight="bold" className="ml-2" />
           </Button>
         </div>
       </nav>
