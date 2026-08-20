@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { List, X, PaperPlaneTilt, ArrowUpRight } from 'phosphor-react';
+import { List, X, ArrowUpRight } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { RESUME_LINK } from '@/constants';
