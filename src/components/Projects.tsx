@@ -94,7 +94,7 @@ const Projects = () => {
                     {project.title}
                   </h3>
                 </div>
-                <p className="text-foreground/80 leading-relaxed text-justify">
+                <p className="text-foreground/80 leading-relaxed text-left">
                   {project.description}
                 </p>
               </div>

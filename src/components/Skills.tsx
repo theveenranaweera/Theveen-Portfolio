@@ -80,7 +80,7 @@ const Skills = () => {
           </p>
         </div>
 
-        <div ref={skillsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={skillsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {SKILL_CATEGORIES.map((category, index) => (
             <div key={index} className="glass-card p-6">
               <h3 className="text-xl font-heading font-semibold text-gradient-accent mb-4 border-b border-primary/20 pb-2">

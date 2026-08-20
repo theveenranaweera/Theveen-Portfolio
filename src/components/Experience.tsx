@@ -145,7 +145,7 @@ const Experience = () => {
                       ) : (
                         <div className="flex gap-4 items-start text-foreground/80 mb-6">
                           <span className="text-muted-foreground/60 font-medium mt-[2px] shrink-0">→</span>
-                          <span className="flex-1 leading-relaxed text-justify">{exp.description}</span>
+                          <span className="flex-1 leading-relaxed text-left">{exp.description}</span>
                         </div>
                       )}
 
